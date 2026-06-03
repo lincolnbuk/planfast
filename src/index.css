@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/800.css";
+
+@import "./style/theme.css";
+
+@layer base {
+    html,
+    body,
+    #root {
+        width: 100%;
+        min-height: 100%;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+    }
+}
+
+.lucide {
+    stroke-width: 1.5;
+
+}
