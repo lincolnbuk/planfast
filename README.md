@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 <div align="center">
-  <img src="https://react.dev/images/home/community.webp" alt="React" width="100" height="100" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt="React" width="120" height="120" />
 </div>
 
 ---
