@@ -12,7 +12,7 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="80" height="80" style="margin: 0 10px;" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="80" height="80" style="margin: 0 10px;" />
 <img src="https://vitejs.dev/logo.svg" alt="Vite" width="80" height="80" style="margin: 0 10px;" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TensorFlowLogo.svg" alt="AI" width="80" height="80" style="margin: 0 10px;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="120" alt="IA Logo">
 
 </div>
 
