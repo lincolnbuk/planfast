@@ -6,7 +6,13 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/facebook/react/main/docs/img/logo.svg" alt="React Logo" width="150" />
+  
+## 🛠️ Tech Stack
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="80" height="80" style="margin: 0 10px;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="80" height="80" style="margin: 0 10px;" />
+<img src="https://vitejs.dev/logo.svg" alt="Vite" width="80" height="80" style="margin: 0 10px;" />
+
 </div>
 
 ---
