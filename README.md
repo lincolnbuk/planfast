@@ -12,6 +12,7 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="80" height="80" style="margin: 0 10px;" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="80" height="80" style="margin: 0 10px;" />
 <img src="https://vitejs.dev/logo.svg" alt="Vite" width="80" height="80" style="margin: 0 10px;" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/TensorFlowLogo.svg" alt="AI" width="80" height="80" style="margin: 0 10px;" />
 
 </div>
 
@@ -38,6 +39,10 @@
 - **Vite** 8.0.12 - Ferramenta de build moderno e servidor de desenvolvimento super rápido
 - **TailwindCSS** 4.3.0 - Framework CSS utilitário para estilização rápida
 - **React Router DOM** 7.16.0 - Roteamento para aplicações single-page
+
+#### Inteligência Artificial
+- **IA Generativa** - Integração com modelos de IA para educação financeira personalizada
+- **Machine Learning** - Análise de padrões e recomendações inteligentes
 
 #### Bibliotecas Auxiliares
 - **Lucide React** 1.17.0 - Ícones SVG elegantes e customizáveis
@@ -140,7 +145,8 @@ export default defineConfig([
 - 🔒 TypeScript para tipagem estática
 - 🧪 Pronto para testes unitários
 - 📱 Design responsivo
-- 🤖 Integração com IA Generativa para educação financeira
+- 🤖 Integração com IA Generativa para educação financeira personalizada
+- 🧠 Machine Learning para análise inteligente de dados financeiros
 
 ### 📚 Documentação Importante
 
@@ -169,6 +175,10 @@ Este projeto está disponível sem licença específica definida.
 - **Vite** 8.0.12 - Modern build tool and lightning-fast development server
 - **TailwindCSS** 4.3.0 - Utility-first CSS framework for rapid styling
 - **React Router DOM** 7.16.0 - Routing for single-page applications
+
+#### Artificial Intelligence
+- **Generative AI** - Integration with AI models for personalized financial education
+- **Machine Learning** - Pattern analysis and intelligent recommendations
 
 #### Supporting Libraries
 - **Lucide React** 1.17.0 - Elegant and customizable SVG icons
@@ -271,7 +281,8 @@ export default defineConfig([
 - 🔒 TypeScript for static typing
 - 🧪 Ready for unit testing
 - 📱 Responsive design
-- 🤖 Integration with Generative AI for financial education
+- 🤖 Integration with Generative AI for personalized financial education
+- 🧠 Machine Learning for intelligent financial data analysis
 
 ### 📚 Important Documentation
 
