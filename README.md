@@ -12,7 +12,7 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="80" height="80" style="margin: 0 10px;" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="80" height="80" style="margin: 0 10px;" />
 <img src="https://vitejs.dev/logo.svg" alt="Vite" width="80" height="80" style="margin: 0 10px;" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width="120" alt="IA Logo">
+<img src="https://img.icons8.com/fluency/240/artificial-intelligence.png" width="120" alt="IA Logo">
 
 </div>
 
