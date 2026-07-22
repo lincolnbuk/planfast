@@ -14,7 +14,7 @@ import { PageHero } from "../components/shared/PageHero";
 import { Card } from "../components/features/SimulationResults/Card";
 import type { SimulationFormData } from "../data/simulation";
 import { useSimulationStorage } from "../hooks/useSimulationStorage";
-import { parseCurrency } from "../utils/currency";
+import { formatCurrency, parseCurrency } from "../utils/currency";
 import { calcMonthlySavings } from "../utils/simulation";
 
 const mock: SimulationFormData = {
@@ -37,6 +37,10 @@ export function SimulationResultsPage() {
   const goalAmount = parseCurrency(data.goalAmount);
   const monthsToGoal =
     monthlySavings > 0 ? Math.ceil(goalAmount / monthlySavings) : null;
+  const monthlySavingsLabel = formatCurrency(monthlySavings);
+  const incomeLabel = formatCurrency(parseCurrency(data.income));
+  const expensesLabel = formatCurrency(parseCurrency(data.expenses));
+  const debtsLabel = formatCurrency(parseCurrency(data.debts));
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
@@ -61,8 +65,7 @@ export function SimulationResultsPage() {
               Insight estratégico
             </p>
             <p className="text-sm text-muted-foreground">
-              Com uma economia mensal de{" "}
-              <strong>R$ {monthlySavings.toFixed(2)}</strong>,{" "}
+              Com uma economia mensal de <strong>{monthlySavingsLabel}</strong>,{" "}
               {monthsToGoal
                 ? `você poderá atingir ${data.goalName} em cerca de ${monthsToGoal} meses.`
                 : "ainda é preciso ajustar o plano para chegar até a meta."}
@@ -92,7 +95,7 @@ export function SimulationResultsPage() {
         <Card
           icon={PiggyBank}
           label="Economia mensal"
-          value={`R$ ${monthlySavings.toFixed(2)}`}
+          value={monthlySavingsLabel}
           subtitle="Valor disponível para investir"
           variant="primary"
         />
@@ -104,19 +107,19 @@ export function SimulationResultsPage() {
 
           <div className="space-y-4 text-sm text-muted-foreground">
             <p>
-              Você possui uma renda mensal de <strong>{data.income}</strong> e
-              gastos fixos de <strong>{data.expenses}</strong>.
+              Você possui uma renda mensal de <strong>{incomeLabel}</strong> e
+              gastos fixos de <strong>{expensesLabel}</strong>.
             </p>
 
             <p>
-              Atualmente, você compromete <strong>{data.debts}</strong> com
+              Atualmente, você compromete <strong>{debtsLabel}</strong> com
               dívidas ou parcelas.
             </p>
 
             <p>
               Mantendo uma economia média de{" "}
-              <strong>R$ {monthlySavings.toFixed(2)}</strong> por mês, será
-              possível alcançar o objetivo "<strong>{data.goalName}</strong>" em
+              <strong>{monthlySavingsLabel}</strong> por mês, será possível
+              alcançar o objetivo "<strong>{data.goalName}</strong>" em
               aproximadamente <strong>{data.goalDeadline} meses</strong>.
             </p>
           </div>
@@ -126,21 +129,21 @@ export function SimulationResultsPage() {
           <Card
             icon={Wallet}
             label="Renda mensal"
-            value={data.income}
+            value={incomeLabel}
             subtitle="Renda total bruta por mês"
           />
 
           <Card
             icon={CreditCardIcon}
             label="Custos fixos de vida"
-            value={data.expenses}
+            value={expensesLabel}
             subtitle="Gastos essenciais por mês"
           />
 
           <Card
             icon={Landmark}
             label="Dívidas / Parcelas"
-            value={data.debts}
+            value={debtsLabel}
             subtitle="Valor comprometido mensalmente"
           />
         </div>

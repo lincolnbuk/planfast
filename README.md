@@ -15,7 +15,9 @@ Nesta versão, eu implementei uma melhoria prática: um histórico de simulaçõ
 - Nova página de histórico de simulações
 - Armazenamento local com localStorage
 - Exibição de dados como renda, prazo, meta e economia mensal por simulação
-- Navegação mais fluida entre a criação e o histórico
+- Navegação automática para a página de resultados ao concluir a última etapa
+- Formatação de valores em moeda brasileira com pontuação e separação correta
+- Interface mais fluida entre formulário, resultado e histórico
 
 ## 🛠️ Tecnologias usadas
 
