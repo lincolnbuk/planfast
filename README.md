@@ -4,260 +4,64 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-6.0.2-3178C6?logo=typescript&logoColor=white&style=for-the-badge)
 ![Vite](https://img.shields.io/badge/Vite-8.0.12-646CFF?logo=vite&logoColor=white&style=for-the-badge)
 
+## 📌 O que o projeto faz
 
-<div align="center">
-  
-## 🛠️ Tech Stack
+O PlanFast é uma aplicação web de planejamento financeiro pessoal criada com React e TypeScript. A pessoa usuária preenche um formulário com renda, gastos, dívidas e objetivo financeiro, e o app gera uma simulação com o valor mensal disponível para economizar.
 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="80" height="80" style="margin: 0 10px;" />
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="80" height="80" style="margin: 0 10px;" />
-<img src="https://vitejs.dev/logo.svg" alt="Vite" width="80" height="80" style="margin: 0 10px;" />
-<img src="https://img.icons8.com/fluency/240/artificial-intelligence.png" width="120" alt="IA Logo">
+Nesta versão, eu implementei uma melhoria prática: um histórico de simulações salvo no navegador, permitindo que o usuário revise metas anteriores sem perder o contexto financeiro.
 
-</div>
+## ✨ Melhorias implementadas
 
----
+- Nova página de histórico de simulações
+- Armazenamento local com localStorage
+- Exibição de dados como renda, prazo, meta e economia mensal por simulação
+- Navegação mais fluida entre a criação e o histórico
 
-## 📋 Conteúdo | Contents
+## 🛠️ Tecnologias usadas
 
-- [Português](#português)
-- [English](#english)
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router DOM
+- Lucide React
 
----
+## ▶️ Como executar
 
-## Português
-
-### 🎯 Sobre o Projeto
-
-**PlanFast** é um aplicativo educacional de finanças desenvolvido com React e Inteligência Artificial Generativa. O projeto fornece um ambiente moderno, rápido e otimizado para aprender sobre planejamento financeiro através de tecnologias web de ponta.
-
-### 🚀 Stack Tecnológico
-
-#### Frontend
-- **React** 19.2.6 - Biblioteca JavaScript para construir interfaces de usuário
-- **TypeScript** 6.0.2 - Superset tipado de JavaScript para maior segurança de tipo
-- **Vite** 8.0.12 - Ferramenta de build moderno e servidor de desenvolvimento super rápido
-- **TailwindCSS** 4.3.0 - Framework CSS utilitário para estilização rápida
-- **React Router DOM** 7.16.0 - Roteamento para aplicações single-page
-
-#### Inteligência Artificial
-- **IA Generativa** - Integração com modelos de IA para educação financeira personalizada
-- **Machine Learning** - Análise de padrões e recomendações inteligentes
-
-#### Bibliotecas Auxiliares
-- **Lucide React** 1.17.0 - Ícones SVG elegantes e customizáveis
-- **Fontsource Inter** 5.2.8 - Fonte Inter otimizada
-
-#### Desenvolvimento
-- **ESLint** 10.3.0 - Linter para código JavaScript/TypeScript
-- **TypeScript ESLint** 8.59.2 - Suporte ESLint para TypeScript
-- **Vite Plugin React** 6.0.1 - Plugin do Vite para otimização de React
-
-### 📦 Estrutura do Projeto
-
-```
-planfast/
-├── src/                    # Código-fonte da aplicação
-├── public/                 # Arquivos públicos estáticos
-├── index.html             # Arquivo HTML principal
-├── package.json           # Dependências e scripts do projeto
-├── vite.config.ts         # Configuração do Vite
-├── tsconfig.json          # Configuração do TypeScript
-├── tsconfig.app.json      # Configuração específica do app
-├── tsconfig.node.json     # Configuração do Node.js
-├── eslint.config.js       # Configuração do ESLint
-└── pnpm-lock.yaml         # Lock file do PNPM
-```
-
-### 🛠️ Scripts Disponíveis
-
-```bash
-# Iniciar servidor de desenvolvimento com HMR
-npm run dev
-
-# Compilar TypeScript e gerar build para produção
-npm run build
-
-# Executar linter ESLint
-npm run lint
-
-# Visualizar preview do build
-npm run preview
-```
-
-### 📋 Dependências Principais
-
-| Pacote | Versão | Propósito |
-|--------|--------|----------|
-| react | 19.2.6 | Biblioteca principal de UI |
-| react-dom | 19.2.6 | Renderização DOM |
-| react-router-dom | 7.16.0 | Roteamento |
-| tailwindcss | 4.3.0 | Estilização CSS |
-| lucide-react | 1.17.0 | Ícones |
-
-### 🔧 Configuração e Instalação
-
-1. **Clonar o repositório**
 ```bash
 git clone https://github.com/lincolnbuk/planfast.git
 cd planfast
-```
-
-2. **Instalar dependências**
-```bash
 npm install
-# ou
-pnpm install
-```
-
-3. **Iniciar servidor de desenvolvimento**
-```bash
 npm run dev
 ```
 
-4. **Acessar a aplicação**
-```
-http://localhost:5173
-```
+A aplicação fica disponível em http://localhost:5173.
 
-### 📝 Configuração ESLint
+## 🧪 Como testar o fluxo principal
 
-O projeto está configurado com ESLint para garantir qualidade de código. Para ambientes de produção, recomenda-se habilitar regras de verificação de tipo:
+1. Acesse a página inicial.
+2. Preencha o formulário com renda, gastos, dívidas e meta.
+3. Clique em gerar simulação.
+4. Veja o resultado da simulação.
+5. Acesse o histórico pelo menu superior para verificar as simulações salvas.
 
-```javascript
-// eslint.config.js
-export default defineConfig([
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      tseslint.configs.recommendedTypeChecked,
-      // ou para regras mais rigorosas:
-      tseslint.configs.strictTypeChecked,
-    ],
-  },
-])
+## 📁 Estrutura principal
+
+```text
+src/
+  components/
+  hooks/
+  pages/
+  utils/
 ```
 
-### 💡 Recursos Principais
+## 💡 O que aprendi
 
-- ⚡ HMR (Hot Module Replacement) para desenvolvimento rápido
-- 🎨 TailwindCSS para estilização eficiente
-- 🔒 TypeScript para tipagem estática
-- 🧪 Pronto para testes unitários
-- 📱 Design responsivo
-- 🤖 Integração com IA Generativa para educação financeira personalizada
-- 🧠 Machine Learning para análise inteligente de dados financeiros
+Durante o desafio, eu aprendi a organizar melhor o estado de uma aplicação React, a trabalhar com rotas e componentes reutilizáveis, e a integrar uma melhoria de UX com persistência local para deixar a experiência mais completa.
 
-### 📚 Documentação Importante
-
-- [React Official Documentation](https://react.dev)
-- [Vite Guide](https://vitejs.dev)
-- [TypeScript Documentation](https://www.typescriptlang.org)
-- [TailwindCSS Documentation](https://tailwindcss.com)
-
-### 📄 Licença
+## 📄 Licença
 
 Este projeto está disponível sem licença específica definida.
-
----
-
-## English
-
-### 🎯 About the Project
-
-**PlanFast** is a financial education application developed with React and Generative AI. The project provides a modern, fast, and optimized environment for learning about financial planning through cutting-edge web technologies.
-
-### 🚀 Tech Stack
-
-#### Frontend
-- **React** 19.2.6 - JavaScript library for building user interfaces
-- **TypeScript** 6.0.2 - Typed superset of JavaScript for type safety
-- **Vite** 8.0.12 - Modern build tool and lightning-fast development server
-- **TailwindCSS** 4.3.0 - Utility-first CSS framework for rapid styling
-- **React Router DOM** 7.16.0 - Routing for single-page applications
-
-#### Artificial Intelligence
-- **Generative AI** - Integration with AI models for personalized financial education
-- **Machine Learning** - Pattern analysis and intelligent recommendations
-
-#### Supporting Libraries
-- **Lucide React** 1.17.0 - Elegant and customizable SVG icons
-- **Fontsource Inter** 5.2.8 - Optimized Inter font
-
-#### Development
-- **ESLint** 10.3.0 - Linter for JavaScript/TypeScript code
-- **TypeScript ESLint** 8.59.2 - ESLint support for TypeScript
-- **Vite Plugin React** 6.0.1 - Vite plugin for React optimization
-
-### 📦 Project Structure
-
-```
-planfast/
-├── src/                    # Application source code
-├── public/                 # Static public files
-├── index.html             # Main HTML file
-├── package.json           # Project dependencies and scripts
-├── vite.config.ts         # Vite configuration
-├── tsconfig.json          # TypeScript configuration
-├── tsconfig.app.json      # App-specific TypeScript config
-├── tsconfig.node.json     # Node.js TypeScript config
-├── eslint.config.js       # ESLint configuration
-└── pnpm-lock.yaml         # PNPM lock file
-```
-
-### 🛠️ Available Scripts
-
-```bash
-# Start development server with HMR
-npm run dev
-
-# Compile TypeScript and build for production
-npm run build
-
-# Run ESLint
-npm run lint
-
-# Preview the production build
-npm run preview
-```
-
-### 📋 Main Dependencies
-
-| Package | Version | Purpose |
-|---------|---------|---------|
-| react | 19.2.6 | Main UI library |
-| react-dom | 19.2.6 | DOM rendering |
-| react-router-dom | 7.16.0 | Routing |
-| tailwindcss | 4.3.0 | CSS styling |
-| lucide-react | 1.17.0 | Icons |
-
-### 🔧 Setup and Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/lincolnbuk/planfast.git
-cd planfast
-```
-
-2. **Install dependencies**
-```bash
-npm install
-# or
-pnpm install
-```
-
-3. **Start the development server**
-```bash
-npm run dev
-```
-
-4. **Access the application**
-```
-http://localhost:5173
-```
-
-### 📝 ESLint Configuration
-
 The project is configured with ESLint to ensure code quality. For production environments, it's recommended to enable type-checking rules:
 
 ```javascript
