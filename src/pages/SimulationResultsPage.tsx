@@ -7,7 +7,7 @@ import {
   PiggyBank,
   Wallet,
 } from "lucide-react";
-import { useState } from "react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { PageHero } from "../components/shared/PageHero";
@@ -29,12 +29,11 @@ const mock: SimulationFormData = {
 export function SimulationResultsPage() {
   const navigate = useNavigate();
   const { getSavedFormData } = useSimulationStorage();
-  const [data] = useState<SimulationFormData>(() => {
-    const savedSimulations = getSavedFormData();
-    const latestSimulation = savedSimulations[0];
-
-    return latestSimulation ?? mock;
-  });
+  const savedSimulations = useMemo(
+    () => getSavedFormData(),
+    [getSavedFormData],
+  );
+  const data = savedSimulations[0] ?? mock;
   const monthlySavings = calcMonthlySavings(data);
   const goalAmount = parseCurrency(data.goalAmount);
   const monthsToGoal =
@@ -124,6 +123,63 @@ export function SimulationResultsPage() {
               alcançar o objetivo "<strong>{data.goalName}</strong>" em
               aproximadamente <strong>{data.goalDeadline} meses</strong>.
             </p>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-primary/10 bg-primary/5 p-4">
+            <h3 className="mb-3 text-sm font-semibold text-foreground">
+              Registros salvos
+            </h3>
+            <div className="space-y-3">
+              {savedSimulations.length > 0 ? (
+                savedSimulations.map((simulation, index) => {
+                  const simulationMonthlySavings =
+                    calcMonthlySavings(simulation);
+                  const simulationLabel = formatCurrency(
+                    simulationMonthlySavings,
+                  );
+
+                  return (
+                    <div
+                      key={
+                        simulation.createdAt ??
+                        `${simulation.goalName}-${index}`
+                      }
+                      className="rounded-xl border border-border/60 bg-background/70 p-3"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-sm font-semibold text-foreground">
+                          {simulation.goalName || `Meta ${index + 1}`}
+                        </p>
+                        <span className="text-xs text-muted-foreground">
+                          {new Date(simulation.createdAt).toLocaleString(
+                            "pt-BR",
+                          )}
+                        </span>
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-3 text-xs text-muted-foreground">
+                        <span>
+                          Renda:{" "}
+                          {formatCurrency(parseCurrency(simulation.income))}
+                        </span>
+                        <span>
+                          Gastos:{" "}
+                          {formatCurrency(parseCurrency(simulation.expenses))}
+                        </span>
+                        <span>
+                          Dívidas:{" "}
+                          {formatCurrency(parseCurrency(simulation.debts))}
+                        </span>
+                        <span>Economia: {simulationLabel}</span>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  Nenhuma simulação salva ainda.
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
