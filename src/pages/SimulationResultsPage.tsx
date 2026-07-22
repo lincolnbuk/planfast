@@ -30,7 +30,9 @@ export function SimulationResultsPage() {
   const navigate = useNavigate();
   const { getSavedFormData } = useSimulationStorage();
   const [data] = useState<SimulationFormData>(() => {
-    const latestSimulation = getSavedFormData()[0];
+    const savedSimulations = getSavedFormData();
+    const latestSimulation = savedSimulations[0];
+
     return latestSimulation ?? mock;
   });
   const monthlySavings = calcMonthlySavings(data);
