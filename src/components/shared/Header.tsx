@@ -1,12 +1,12 @@
-import { Wallet, TrendingUp, Clock, Moon, Sun } from "lucide-react";
-import { useNavigate } from "react-router-dom"
-import { Button } from "./Button"
-import { useTheme } from "../../hooks/useTheme"
+import { Wallet, TrendingUp, Clock, Moon, Sun, BarChart3 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "./Button";
+import { useTheme } from "../../hooks/useTheme";
 import { Divider } from "./Divider";
 
 export function Header() {
-  const navigate = useNavigate()
-  const { theme, toggleTheme } = useTheme()
+  const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="border-b border-(--border) px-6 py-3">
@@ -17,9 +17,7 @@ export function Header() {
           </div>
 
           <span className="text-lg">
-            <span className="text-muted-foreground font-medium">
-              PlanFast
-            </span>
+            <span className="text-muted-foreground font-medium">PlanFast</span>
           </span>
         </div>
 
@@ -31,6 +29,13 @@ export function Header() {
             onClick={() => navigate("/")}
           >
             <span className="hidden sm:inline">Nova Simulação</span>
+          </Button>
+          <Button
+            variant="ghost"
+            icon={BarChart3}
+            onClick={() => navigate("/resultado")}
+          >
+            <span className="hidden sm:inline">Resultado</span>
           </Button>
           <Button
             variant="ghost"
