@@ -7,7 +7,7 @@ import {
   PiggyBank,
   Wallet,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { PageHero } from "../components/shared/PageHero";
@@ -29,19 +29,14 @@ const mock: SimulationFormData = {
 export function SimulationResultsPage() {
   const navigate = useNavigate();
   const { getSavedFormData } = useSimulationStorage();
-  const [data, setData] = useState<SimulationFormData>(mock);
+  const [data] = useState<SimulationFormData>(() => {
+    const latestSimulation = getSavedFormData()[0];
+    return latestSimulation ?? mock;
+  });
   const monthlySavings = calcMonthlySavings(data);
   const goalAmount = parseCurrency(data.goalAmount);
   const monthsToGoal =
     monthlySavings > 0 ? Math.ceil(goalAmount / monthlySavings) : null;
-
-  useEffect(() => {
-    const latestSimulation = getSavedFormData()[0];
-
-    if (latestSimulation) {
-      setData(latestSimulation);
-    }
-  }, [getSavedFormData]);
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:py-14">

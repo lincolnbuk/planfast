@@ -6,7 +6,7 @@ import {
   Trash2,
   Wallet,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { PageHero } from "../components/shared/PageHero";
@@ -23,10 +23,6 @@ export function SimulationHistoryPage() {
   const [history, setHistory] = useState<SimulationHistoryItem[]>(() =>
     getSavedFormData(),
   );
-
-  useEffect(() => {
-    setHistory(getSavedFormData());
-  }, [getSavedFormData]);
 
   const handleClearHistory = () => {
     clearSavedFormData();
