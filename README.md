@@ -68,14 +68,14 @@ The project is configured with ESLint to ensure code quality. For production env
 // eslint.config.js
 export default defineConfig([
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       tseslint.configs.recommendedTypeChecked,
       // or for stricter rules:
       tseslint.configs.strictTypeChecked,
     ],
   },
-])
+]);
 ```
 
 ### 💡 Key Features

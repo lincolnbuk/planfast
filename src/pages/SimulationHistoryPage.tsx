@@ -1,30 +1,63 @@
-import { ArrowLeft, CalendarDays, Goal, PiggyBank, Wallet } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import {
+  ArrowLeft,
+  CalendarDays,
+  Goal,
+  PiggyBank,
+  Trash2,
+  Wallet,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { PageHero } from '../components/shared/PageHero'
-import { useSimulationStorage, type SimulationHistoryItem } from '../hooks/useSimulationStorage'
-import { calcMonthlySavings } from '../utils/simulation'
+import { PageHero } from "../components/shared/PageHero";
+import {
+  useSimulationStorage,
+  type SimulationHistoryItem,
+} from "../hooks/useSimulationStorage";
+import { calcMonthlySavings } from "../utils/simulation";
 
 export function SimulationHistoryPage() {
-  const navigate = useNavigate()
-  const { getSavedFormData } = useSimulationStorage()
-  const [history, setHistory] = useState<SimulationHistoryItem[]>(() => getSavedFormData())
+  const navigate = useNavigate();
+  const { getSavedFormData, clearSavedFormData, removeSavedFormData } =
+    useSimulationStorage();
+  const [history, setHistory] = useState<SimulationHistoryItem[]>(() =>
+    getSavedFormData(),
+  );
 
   useEffect(() => {
-    setHistory(getSavedFormData())
-  }, [])
+    setHistory(getSavedFormData());
+  }, [getSavedFormData]);
+
+  const handleClearHistory = () => {
+    clearSavedFormData();
+    setHistory([]);
+  };
+
+  const handleRemoveItem = (createdAt: string) => {
+    setHistory(removeSavedFormData(createdAt));
+  };
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
-      <button
-        type="button"
-        onClick={() => navigate('/')}
-        className="mb-6 flex items-center gap-2 text-sm font-medium text-primary transition hover:opacity-80"
-      >
-        <ArrowLeft size={16} />
-        Voltar para nova simulação
-      </button>
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <button
+          type="button"
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 text-sm font-medium text-primary transition hover:opacity-80"
+        >
+          <ArrowLeft size={16} />
+          Voltar para nova simulação
+        </button>
+
+        <button
+          type="button"
+          onClick={handleClearHistory}
+          className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:bg-muted/50"
+          disabled={history.length === 0}
+        >
+          Limpar histórico
+        </button>
+      </div>
 
       <PageHero
         title="Histórico de simulações"
@@ -37,18 +70,22 @@ export function SimulationHistoryPage() {
             Ainda não há simulações salvas.
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            Complete uma simulação para ela aparecer aqui e acompanhar sua rotina financeira.
+            Complete uma simulação para ela aparecer aqui e acompanhar sua
+            rotina financeira.
           </p>
         </section>
       ) : (
         <div className="grid gap-4">
           {history.map((item, index) => {
-            const monthlySavings = calcMonthlySavings(item)
-            const createdAt = new Date(item.createdAt).toLocaleDateString('pt-BR', {
-              day: '2-digit',
-              month: 'short',
-              year: 'numeric',
-            })
+            const monthlySavings = calcMonthlySavings(item);
+            const createdAt = new Date(item.createdAt).toLocaleDateString(
+              "pt-BR",
+              {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              },
+            );
 
             return (
               <article
@@ -57,15 +94,29 @@ export function SimulationHistoryPage() {
               >
                 <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">Simulação #{history.length - index}</p>
-                    <h2 className="text-xl font-semibold text-foreground">{item.goalName}</h2>
+                    <p className="text-sm text-muted-foreground">
+                      Simulação #{history.length - index}
+                    </p>
+                    <h2 className="text-xl font-semibold text-foreground">
+                      {item.goalName}
+                    </h2>
                     <p className="mt-1 text-sm text-muted-foreground">
                       Criada em {createdAt}
                     </p>
                   </div>
 
-                  <div className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-                    Economia mensal: R$ {monthlySavings.toFixed(2)}
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+                      Economia mensal: R$ {monthlySavings.toFixed(2)}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveItem(item.createdAt)}
+                      className="rounded-full border border-border p-2 text-muted-foreground transition hover:bg-muted/50 hover:text-foreground"
+                      aria-label={`Remover simulação ${item.goalName}`}
+                    >
+                      <Trash2 size={16} />
+                    </button>
                   </div>
                 </div>
 
@@ -75,7 +126,9 @@ export function SimulationHistoryPage() {
                       <Wallet size={16} className="text-primary" />
                       Renda
                     </div>
-                    <p className="text-sm text-muted-foreground">{item.income}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.income}
+                    </p>
                   </div>
 
                   <div className="rounded-xl bg-background/70 p-4">
@@ -83,7 +136,9 @@ export function SimulationHistoryPage() {
                       <CalendarDays size={16} className="text-primary" />
                       Prazo
                     </div>
-                    <p className="text-sm text-muted-foreground">{item.goalDeadline} meses</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.goalDeadline} meses
+                    </p>
                   </div>
 
                   <div className="rounded-xl bg-background/70 p-4">
@@ -91,7 +146,9 @@ export function SimulationHistoryPage() {
                       <Goal size={16} className="text-primary" />
                       Meta
                     </div>
-                    <p className="text-sm text-muted-foreground">{item.goalAmount}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.goalAmount}
+                    </p>
                   </div>
                 </div>
 
@@ -101,14 +158,16 @@ export function SimulationHistoryPage() {
                     Resumo da simulação
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Com uma economia mensal de R$ {monthlySavings.toFixed(2)}, sua meta de {item.goalName} pode ser acompanhada com mais clareza.
+                    Com uma economia mensal de R$ {monthlySavings.toFixed(2)},
+                    sua meta de {item.goalName} pode ser acompanhada com mais
+                    clareza.
                   </p>
                 </div>
               </article>
-            )
+            );
           })}
         </div>
       )}
     </main>
-  )
+  );
 }
