@@ -10,7 +10,7 @@
 
 ### O que é
 
-O PlanFast é uma aplicação web de planejamento financeiro pessoal feita com React + TypeScript. A aplicação ajuda pessoas a simular metas financeiras a partir de renda, despesas e dívidas, o[...]
+O PlanFast é uma aplicação web de planejamento financeiro pessoal feita com React + TypeScript. A aplicação ajuda pessoas a simular metas financeiras a partir de renda, despesas e dívidas, o[...[...]
 
 ### Principais funcionalidades
 
@@ -50,7 +50,7 @@ Para habilitar a IA, você precisa:
    ```
 3. Instalar dependências: `pnpm install`
 
-> Nota: o Google Gemini também exige cotas ativas no projeto. Se receber erros de cota/excedido, configure billing em https://console.cloud.google.com/ e verifique `APIs & Services` → `Quotas` [...]
+> Nota: o Google Gemini também exige cotas ativas no projeto. Se receber erros de cota/excedido, configure billing em https://console.cloud.google.com/ e verifique `APIs & Services` → `Quotas` [......]
 
 Veja [SETUP_GEMINI.md](./SETUP_GEMINI.md) para instruções completas.
 
@@ -124,7 +124,7 @@ src/
 
 ### Licença
 
-Nenhuma licença específica definida no repositório.
+Nenhuma licença específica definida.
 
 ---
 
@@ -132,7 +132,7 @@ Nenhuma licença específica definida no repositório.
 
 ### What this is
 
-PlanFast is a personal financial planning web app built with React + TypeScript. The application helps users simulate financial goals based on income, expenses and debts, providing results and a local simulation history stored in the browser.
+PlanFast is a personal financial planning web app built with React + TypeScript. The application helps users simulate financial goals based on income, expenses and debts, providing results and a local[...]
 
 ### Key features
 
@@ -172,7 +172,7 @@ To enable the AI you need to:
    ```
 3. Install dependencies: `pnpm install`
 
-Note: Google Gemini also requires active quotas on the project. If you receive quota/exceeded errors, enable billing at https://console.cloud.google.com/ and check `APIs & Services` → `Quotas`. See [SETUP_GEMINI.md](./SETUP_GEMINI.md) for full instructions.
+Note: Google Gemini also requires active quotas on the project. If you receive quota/exceeded errors, enable billing at https://console.cloud.google.com/ and check `APIs & Services` → `Quotas`. See [...]
 
 ### Tech stack
 
@@ -243,20 +243,6 @@ src/
 ### License
 
 No specific license defined.
-
----
-
-## Commits feitos em 2026-08-04 / Commits made on 2026-08-04
-
-Below are the commits recorded in this repository on 2026-08-04 (UTC):
-
-- f2736985 — feat: add Gemini generative AI analysis, cache/retry support, and docs — Adriano Lincoln — 2026-08-04T15:49:31Z
-  - https://github.com/lincolnbuk/planfast/commit/f2736985c238acb0c5394ba75becfdccc9cd7659
-
-Abaixo os commits registrados neste repositório em 04/08/2026 (UTC):
-
-- f2736985 — feat: add Gemini generative AI analysis, cache/retry support, and docs — Adriano Lincoln — 2026-08-04T15:49:31Z
-  - https://github.com/lincolnbuk/planfast/commit/f2736985c238acb0c5394ba75becfdccc9cd7659
 
 ---
 
