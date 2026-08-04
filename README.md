@@ -132,7 +132,7 @@ Nenhuma licença específica definida no repositório.
 
 ### What this is
 
-PlanFast is a personal financial planning web app built with React + TypeScript. It helps users simulate financial goals based on income, expenses and debts, presenting results and a local simula[...]
+PlanFast is a personal financial planning web app built with React + TypeScript. The application helps users simulate financial goals based on income, expenses and debts, providing results and a local simulation history stored in the browser.
 
 ### Key features
 
@@ -142,12 +142,43 @@ PlanFast is a personal financial planning web app built with React + TypeScript.
 - Routes for form, results and history pages
 - Currency formatting for Brazilian Real
 - Responsive UI with Tailwind CSS and Lucide icons
+- 🤖 Generative AI analysis using Google Gemini for personalized insights
+
+### Generative AI - Google Gemini
+
+PlanFast now integrates **Google Gemini 2.0 Flash** to provide intelligent, personalized financial analyses:
+
+What the AI does:
+
+- ✅ Analyzes your financial profile (income, expenses, debts)
+- ✅ Checks whether your goal is feasible within the desired timeframe
+- ✅ Offers 2-3 practical, specific recommendations
+- ✅ Provides motivation and insights in Brazilian Portuguese
+
+How to use:
+
+1. Fill in the simulation form
+2. On the Results page you will see a card titled "Generative AI Analysis"
+3. The AI will analyze your profile in real time
+
+Configuration:
+
+To enable the AI you need to:
+
+1. Get a free API key at: https://aistudio.google.com/app/apikey
+2. Create a `.env.local` file at the project root:
+   ```
+   VITE_GEMINI_API_KEY=your_api_key_here
+   ```
+3. Install dependencies: `pnpm install`
+
+Note: Google Gemini also requires active quotas on the project. If you receive quota/exceeded errors, enable billing at https://console.cloud.google.com/ and check `APIs & Services` → `Quotas`. See [SETUP_GEMINI.md](./SETUP_GEMINI.md) for full instructions.
 
 ### Tech stack
 
 - Language: TypeScript (primary)
 - Framework/runtime: React 19 + Vite 8
-- Notable libraries: react-router-dom, tailwindcss, lucide-react, @fontsource/inter
+- Notable libraries: react-router-dom, tailwindcss, lucide-react, @fontsource/inter, @google/generative-ai
 
 Main versions (see package.json):
 
@@ -155,6 +186,7 @@ Main versions (see package.json):
 - typescript ~6.0.2
 - vite 8.0.12
 - tailwindcss 4.3.0
+- @google/generative-ai 0.21.0
 
 ### How to run (development)
 
