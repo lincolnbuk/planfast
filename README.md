@@ -10,7 +10,7 @@
 
 ### O que é
 
-O PlanFast é uma aplicação web de planejamento financeiro pessoal feita com React + TypeScript. A aplicação ajuda pessoas a simular metas financeiras a partir de renda, despesas e dívidas, oferecendo resultados e um histórico local de simulações para consulta posterior.
+O PlanFast é uma aplicação web de planejamento financeiro pessoal feita com React + TypeScript. A aplicação ajuda pessoas a simular metas financeiras a partir de renda, despesas e dívidas, o[...]
 
 ### Principais funcionalidades
 
@@ -50,7 +50,7 @@ Para habilitar a IA, você precisa:
    ```
 3. Instalar dependências: `pnpm install`
 
-> Nota: o Google Gemini também exige cotas ativas no projeto. Se receber erros de cota/excedido, configure billing em https://console.cloud.google.com/ e verifique `APIs & Services` → `Quotas` para `generativelanguage.googleapis.com`.
+> Nota: o Google Gemini também exige cotas ativas no projeto. Se receber erros de cota/excedido, configure billing em https://console.cloud.google.com/ e verifique `APIs & Services` → `Quotas` [...]
 
 Veja [SETUP_GEMINI.md](./SETUP_GEMINI.md) para instruções completas.
 
@@ -132,7 +132,7 @@ Nenhuma licença específica definida no repositório.
 
 ### What this is
 
-PlanFast is a personal financial planning web app built with React + TypeScript. It helps users simulate financial goals based on income, expenses and debts, presenting results and a local simulation history for later review.
+PlanFast is a personal financial planning web app built with React + TypeScript. It helps users simulate financial goals based on income, expenses and debts, presenting results and a local simula[...]
 
 ### Key features
 
@@ -179,7 +179,7 @@ App runs by default at: http://localhost:5173
 4. View results on the Results page.
 5. Check the History page to review previously saved simulations stored locally.
 
-### Project layout (high level)
+### Project layout ( high level )
 
 ```text
 src/
@@ -211,6 +211,20 @@ src/
 ### License
 
 No specific license defined.
+
+---
+
+## Commits feitos em 2026-08-04 / Commits made on 2026-08-04
+
+Below are the commits recorded in this repository on 2026-08-04 (UTC):
+
+- f2736985 — feat: add Gemini generative AI analysis, cache/retry support, and docs — Adriano Lincoln — 2026-08-04T15:49:31Z
+  - https://github.com/lincolnbuk/planfast/commit/f2736985c238acb0c5394ba75becfdccc9cd7659
+
+Abaixo os commits registrados neste repositório em 04/08/2026 (UTC):
+
+- f2736985 — feat: add Gemini generative AI analysis, cache/retry support, and docs — Adriano Lincoln — 2026-08-04T15:49:31Z
+  - https://github.com/lincolnbuk/planfast/commit/f2736985c238acb0c5394ba75becfdccc9cd7659
 
 ---
 
