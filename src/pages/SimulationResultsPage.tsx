@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import { PageHero } from "../components/shared/PageHero";
 import { Card } from "../components/features/SimulationResults/Card";
+import { AIAnalysisCard } from "../components/features/SimulationResults/AIAnalysisCard";
 import type { SimulationFormData } from "../data/simulation";
 import { useSimulationStorage } from "../hooks/useSimulationStorage";
 import { formatCurrency, parseCurrency } from "../utils/currency";
@@ -180,6 +181,10 @@ export function SimulationResultsPage() {
                 </p>
               )}
             </div>
+          </div>
+
+          <div className="mt-6">
+            <AIAnalysisCard formData={data} />
           </div>
         </div>
 
