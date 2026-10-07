@@ -14,6 +14,7 @@ import {
   useSimulationStorage,
   type SimulationHistoryItem,
 } from "../hooks/useSimulationStorage";
+import { formatCurrency } from "../utils/currency";
 import { calcMonthlySavings } from "../utils/simulation";
 
 export function SimulationHistoryPage() {
@@ -73,15 +74,18 @@ export function SimulationHistoryPage() {
       ) : (
         <div className="grid gap-4">
           {history.map((item, index) => {
-            const monthlySavings = calcMonthlySavings(item);
-            const createdAt = new Date(item.createdAt).toLocaleDateString(
-              "pt-BR",
-              {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              },
-            );
+            const calculatedSavings = calcMonthlySavings(item);
+            const monthlySavings = Number.isFinite(calculatedSavings)
+              ? calculatedSavings
+              : 0;
+            const createdAt = new Date(item.createdAt);
+            const createdAtLabel = Number.isNaN(createdAt.getTime())
+              ? "Data indisponível"
+              : createdAt.toLocaleDateString("pt-BR", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                });
 
             return (
               <article
@@ -97,13 +101,13 @@ export function SimulationHistoryPage() {
                       {item.goalName}
                     </h2>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Criada em {createdAt}
+                      Criada em {createdAtLabel}
                     </p>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <div className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-                      Economia mensal: R$ {monthlySavings.toFixed(2)}
+                      Economia mensal: {formatCurrency(monthlySavings)}
                     </div>
                     <button
                       type="button"
@@ -154,7 +158,7 @@ export function SimulationHistoryPage() {
                     Resumo da simulação
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Com uma economia mensal de R$ {monthlySavings.toFixed(2)},
+                    Com uma economia mensal de {formatCurrency(monthlySavings)},
                     sua meta de {item.goalName} pode ser acompanhada com mais
                     clareza.
                   </p>

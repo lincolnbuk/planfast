@@ -13,19 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { PageHero } from "../components/shared/PageHero";
 import { Card } from "../components/features/SimulationResults/Card";
 import { AIAnalysisCard } from "../components/features/SimulationResults/AIAnalysisCard";
-import type { SimulationFormData } from "../data/simulation";
 import { useSimulationStorage } from "../hooks/useSimulationStorage";
 import { formatCurrency, parseCurrency } from "../utils/currency";
 import { calcMonthlySavings } from "../utils/simulation";
-
-const mock: SimulationFormData = {
-  income: "R$ 5.000,00",
-  expenses: "R$ 2.000,00",
-  debts: "R$ 500,00",
-  goalName: "Viagem para o Japão",
-  goalAmount: "R$ 15.000,00",
-  goalDeadline: "12",
-};
 
 export function SimulationResultsPage() {
   const navigate = useNavigate();
@@ -34,9 +24,40 @@ export function SimulationResultsPage() {
     () => getSavedFormData(),
     [getSavedFormData],
   );
-  const data = savedSimulations[0] ?? mock;
-  const monthlySavings = calcMonthlySavings(data);
-  const goalAmount = parseCurrency(data.goalAmount);
+  const data = savedSimulations[0];
+
+  if (!data) {
+    return (
+      <main className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+        <PageHero
+          title="Resultado da sua simulação"
+          subtitle="Com base no seu perfil financeiro e objetivos."
+        />
+        <section className="rounded-2xl border border-border bg-card p-8 text-center shadow-[4px_4px_18px_0px_rgba(0,0,0,0.12)]">
+          <p className="text-lg font-semibold text-foreground">
+            Nenhuma simulação disponível.
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Crie uma simulação para visualizar seus resultados personalizados.
+          </p>
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="mt-5 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+          >
+            Criar simulação
+          </button>
+        </section>
+      </main>
+    );
+  }
+
+  const calculatedSavings = calcMonthlySavings(data);
+  const monthlySavings = Number.isFinite(calculatedSavings)
+    ? calculatedSavings
+    : 0;
+  const parsedGoalAmount = parseCurrency(data.goalAmount);
+  const goalAmount = Number.isFinite(parsedGoalAmount) ? parsedGoalAmount : 0;
   const monthsToGoal =
     monthlySavings > 0 ? Math.ceil(goalAmount / monthlySavings) : null;
   const monthlySavingsLabel = formatCurrency(monthlySavings);
@@ -120,9 +141,10 @@ export function SimulationResultsPage() {
 
             <p>
               Mantendo uma economia média de{" "}
-              <strong>{monthlySavingsLabel}</strong> por mês, será possível
-              alcançar o objetivo "<strong>{data.goalName}</strong>" em
-              aproximadamente <strong>{data.goalDeadline} meses</strong>.
+              <strong>{monthlySavingsLabel}</strong> por mês,{" "}
+              {monthsToGoal
+                ? `a meta "${data.goalName}" poderá ser alcançada em aproximadamente ${monthsToGoal} meses.`
+                : `a meta "${data.goalName}" ainda não tem um prazo estimável com essa economia.`}
             </p>
           </div>
 
@@ -136,8 +158,13 @@ export function SimulationResultsPage() {
                   const simulationMonthlySavings =
                     calcMonthlySavings(simulation);
                   const simulationLabel = formatCurrency(
-                    simulationMonthlySavings,
+                    Number.isFinite(simulationMonthlySavings)
+                      ? simulationMonthlySavings
+                      : 0,
                   );
+                  const createdAt = simulation.createdAt
+                    ? new Date(simulation.createdAt)
+                    : null;
 
                   return (
                     <div
@@ -152,14 +179,14 @@ export function SimulationResultsPage() {
                           {simulation.goalName || `Meta ${index + 1}`}
                         </p>
                         <span className="text-xs text-muted-foreground">
-                          {new Date(simulation.createdAt).toLocaleString(
-                            "pt-BR",
-                          )}
+                          {createdAt && !Number.isNaN(createdAt.getTime())
+                            ? createdAt.toLocaleString("pt-BR")
+                            : "Data indisponível"}
                         </span>
                       </div>
                       <div className="mt-2 flex flex-wrap gap-3 text-xs text-muted-foreground">
                         <span>
-                          Renda:{" "}
+                          Renda: {" "}
                           {formatCurrency(parseCurrency(simulation.income))}
                         </span>
                         <span>
